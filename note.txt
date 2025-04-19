@@ -1,0 +1,7 @@
+pakage.json le chai project ko bare ma describe garx
+node_modules ma chai package install gareko basx
+port number available-0-65535
+
+localhost can also be written as
+localhost-->127.0.0.1:3000 -->   (localhost:3000)
+localhost-->[::1]:3000 -->   (localhost:3000)
