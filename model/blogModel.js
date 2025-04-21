@@ -9,8 +9,8 @@ title:{
 subtitle:{
     type:String
 },
-descrription:{
-    type:Text
+description:{
+    type:String
 },
 image:{
     Type:String
