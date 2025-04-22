@@ -19,3 +19,7 @@ string-->string ma chai hamle dherai lekhna mildaina
 mongoose()-->yo vaneko function
 mongoose.schema-->yo vaneko property
 mongoose.schema()--> yo vaneko method
+
+
+text ko lagi content-type-->application/json
+file ko lagi content type-->multipart/form-data

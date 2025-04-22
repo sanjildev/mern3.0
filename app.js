@@ -2,9 +2,13 @@ require('dotenv').config()
 const express=require('express')
 const connectTodatabase = require('./database')
 const Blog = require('./model/blogModel')
+const {multer,storage}=require('./midleware/multerConfig')
+const upload=multer({storage})
 const app=express()
 app.use(express.json())
 connectTodatabase()
+
+
 app.get('/blog',(req,res)=>{
     res.status(200).send('hello and bye world!! ') //this is in plain text format
 })
@@ -14,12 +18,18 @@ app.get('/blog',(req,res)=>{
 //post
 
 
-app.post("/blog",async(req,res)=>{
+app.post("/blog",upload.single('image'),async(req,res)=>{
     const {title,subtitle,description,image}=req.body
-const createBlog=await Blog.create({title,subtitle,description,image})
+    if(!title || !description || !subtitle || !image){
+        return res.status(400).json({
+            message:"Please provide all data correctly!!"
+        })
+    }
+    const createBlog=await Blog.create({title,subtitle,description,image})
+ 
     res.status(201).json({
         message:"blog api hit successfully!!",
-        data:createBlog
+      data:createBlog
     })
 })
 app.get('/about',(req,res)=>{
