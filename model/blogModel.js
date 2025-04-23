@@ -13,7 +13,7 @@ description:{
     type:String
 },
 image:{
-    Type:String
+    type:String
 }
 })
 const Blog=mongoose.model('Blog',blogSchhema)

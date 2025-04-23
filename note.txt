@@ -23,3 +23,7 @@ mongoose.schema()--> yo vaneko method
 
 text ko lagi content-type-->application/json
 file ko lagi content type-->multipart/form-data
+
+
+req.body--> yesma chai text wala data matra aaux
+req.file-->yesma chai file (eg:video,image,file) wala data matra aaux
