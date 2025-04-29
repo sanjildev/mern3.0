@@ -95,7 +95,8 @@ if(req.file){
 }
 const updateBlog=await Blog.findByIdAndUpdate(id,{title,subtitle,description,image:fileName})
 res.status(200).json({
-    message:'blog updated succesfully!!'
+    message:'blog updated succesfully!!',
+    data:updateBlog
 })
 
 })

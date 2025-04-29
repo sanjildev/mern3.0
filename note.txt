@@ -27,3 +27,24 @@ file ko lagi content type-->multipart/form-data
 
 req.body--> yesma chai text wala data matra aaux
 req.file-->yesma chai file (eg:video,image,file) wala data matra aaux
+
+
+html,css-->yesma chai dom re render hunx yedi html doc kunai change garyo vaneko
+react-yesma chai dom re render hudaina yesma chai ja change vako ho tya matra change hunx
+
+diffing-->2 ota virtual dom bich ma garne difference garne process lai diffing vaninx
+reconcilation-->diffing bata aayeko output lai dom ma rakhne kam lai reconcilation vaninx
+
+garbage collector-->yo vaneko chai coding ma exist hunx tara use hudaina vane chai garbage collector le automatically afai le tyo hataedinx
+
+
+CRA-->yo chai hamle jaba thulo scalable enterprise level ko project banaunu x vane CRA use garne
+Vite-->yo chai hamle afno project fast banauna x
+
+
+
+how babel works??
+jsDev(tag,attributes,content)
+
+yo chai react ko--><h1>hello world </h1>
+yo chai babel le gareko-->jsDev('h1',void,'hello world')
