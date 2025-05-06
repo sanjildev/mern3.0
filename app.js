@@ -57,7 +57,7 @@ app.post("/blog",upload.single('image'),async(req,res)=>{
  
    let fileName;
    if(req.file){
-    fileName='http://localhost:3000/' + req.file.filename
+    fileName='https://mern3-0.onrender.com/' + req.file.filename
    }
    else{
     fileName="https://cdn2.hubspot.net/hubfs/263750/blogging-083016.jpg"
@@ -86,7 +86,7 @@ app.patch('/blog/:id',upload.single('image'),async(req,res)=>{
 const {title,subtitle,description}=req.body
 let fileName;
 if(req.file){
-    fileName='http://localhost:3000/' + req.file.filename
+    fileName='https://mern3-0.onrender.com/' + req.file.filename
     const blog=await Blog.findById(id)
     const oldFileName=blog.image
     const oldFile = oldFileName.split('/').pop();
