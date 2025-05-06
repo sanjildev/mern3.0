@@ -68,7 +68,7 @@ app.post("/blog",upload.single('image'),async(req,res)=>{
             message:"Please provide all data correctly!!"
         })
     }
-    const createBlog=await Blog.create({title,subtitle,description,image:filename})
+    const createBlog=await Blog.create({title,subtitle,description,image:fileName})
  
     res.status(201).json({
         message:"blog api hit successfully!!",
