@@ -10,7 +10,7 @@ const fs=require('fs')
 app.use(express.json())
 connectTodatabase()
 app.use(cors({
-    origin:"http://localhost:5173"
+    origin:"*"
 }) )
 
 //get all blogs
@@ -55,12 +55,12 @@ res.status(200).json({
 app.post("/blog",upload.single('image'),async(req,res)=>{
     const {title,subtitle,description}=req.body
  
-   let filename;
+   let fileName;
    if(req.file){
-    filename='http://localhost:3000/' + req.file.filename
+    fileName='http://localhost:3000/' + req.file.filename
    }
    else{
-    filename="https://cdn2.hubspot.net/hubfs/263750/blogging-083016.jpg"
+    fileName="https://cdn2.hubspot.net/hubfs/263750/blogging-083016.jpg"
    }
     
     if(!title || !description || !subtitle){
@@ -89,8 +89,8 @@ if(req.file){
     fileName='http://localhost:3000/' + req.file.filename
     const blog=await Blog.findById(id)
     const oldFileName=blog.image
-
-    fs.unlink(`./storage/${oldFileName}`,(err)=>{
+    const oldFile = oldFileName.split('/').pop();
+    fs.unlink(`./storage/${oldFile}`,(err)=>{
         if(err){
             console.log(err);
             
@@ -115,9 +115,9 @@ app.delete('/blog/:id',async(req,res)=>{
     const id=req.params.id
     const blog=await Blog.findById(id)
     const filename=blog.image
+    const oldFile = filename.split('/').pop();
   
-  
-    fs.unlink(`./storage/${filename}`,(err)=>{
+    fs.unlink(`./storage/${oldFile}`,(err)=>{
         if(err){
             console.log(err);
             
