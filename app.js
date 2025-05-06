@@ -4,11 +4,14 @@ const connectTodatabase = require('./database')
 const Blog = require('./model/blogModel')
 const {multer,storage}=require('./midleware/multerConfig')
 const upload=multer({storage})
+const cors=require('cors')
 const app=express()
 const fs=require('fs')
 app.use(express.json())
 connectTodatabase()
-
+app.use(cors({
+    origin:"http://localhost:5173"
+}) )
 
 //get all blogs
 
@@ -52,8 +55,13 @@ res.status(200).json({
 app.post("/blog",upload.single('image'),async(req,res)=>{
     const {title,subtitle,description}=req.body
  
-    const filename=req.file.filename
-    console.log(req.file);
+   let filename;
+   if(req.file){
+    filename='http://localhost:3000/' + req.file.filename
+   }
+   else{
+    filename="https://cdn2.hubspot.net/hubfs/263750/blogging-083016.jpg"
+   }
     
     if(!title || !description || !subtitle){
         return res.status(400).json({
@@ -78,7 +86,7 @@ app.patch('/blog/:id',upload.single('image'),async(req,res)=>{
 const {title,subtitle,description}=req.body
 let fileName;
 if(req.file){
-    fileName=req.file.filename
+    fileName='http://localhost:3000/' + req.file.filename
     const blog=await Blog.findById(id)
     const oldFileName=blog.image
 
